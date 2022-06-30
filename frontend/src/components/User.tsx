@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { INotes } from "../interface/INotes";
 import { Link, useNavigate } from "react-router-dom";
+import { Button, LinkList, MainButton } from "./Styled/button";
+import { Article, Section } from "./Styled/section";
 
 export function User() {
 
@@ -32,11 +34,11 @@ export function User() {
 
     return (
       <>
-        {logg && <div key={note.id}>
+        {logg && <Article key={note.id}>
           <h2 >
-            <Link to={noteLink}>{note.title}</Link>
+            <LinkList to={noteLink}>{note.title}</LinkList>
           </h2>
-        </div>}
+        </Article>}
       </>
     );
   });
@@ -46,11 +48,12 @@ export function User() {
   }
   return (
     <>
-      {logg &&<>
-        <button onClick={addToList}>Skapa nytt document</button>
+      {logg &&<><Section>
+        <MainButton onClick={addToList}>Skapa nytt document</MainButton>
         <br />
         <br />
         {list}
+        </Section>
       </>}
     </>
   );

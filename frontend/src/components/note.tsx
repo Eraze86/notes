@@ -3,6 +3,9 @@ import { INotes } from "../interface/INotes";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
+import { Article, Section } from "./Styled/section";
+import {  H1Title } from "./Styled/Htext";
+import { MainButton } from "./Styled/button";
 export function Note() {
 
   const nav = useNavigate();
@@ -32,18 +35,18 @@ export function Note() {
       if (noteId === note.id) {
         return (
           <>
-            {doc && <><div key={note.id}>
+            {doc && <><Section key={note.id}>
       
-              <h2>{note.title} </h2>
+              <H1Title>{note.title} </H1Title>
               <div dangerouslySetInnerHTML={{ __html: note.content }}></div>
-              <button onClick={changeDoc}>Redigera</button>
-              <button onClick={deleteBtn}>Radera</button>
-              <button onClick={back}>Tillbaka</button>
-            </div></>}
+              <MainButton onClick={changeDoc}>Redigera</MainButton>
+              <MainButton onClick={deleteBtn}>Radera</MainButton>
+              <MainButton onClick={back}>Tillbaka</MainButton>
+            </Section></>}
                     
 
             {change && (
-              <>
+              <><Article>
                
                 <Editor
                   apiKey="6hqytudlu870wzja968yokx4myr1nzyi3rr9f1424qxxbdp2"
@@ -82,8 +85,8 @@ export function Note() {
                       "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                   }}
                 />
-                <button onClick={save}>Spara</button>
-              </>
+                <MainButton onClick={save}>Spara</MainButton>
+                </Article></>
             )}
           </>
         );

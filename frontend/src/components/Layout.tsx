@@ -2,6 +2,11 @@ import axios from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { IUser } from "../interface/IUser";
+import { Button } from "./Styled/button";
+import { Header } from "./Styled/header";
+import { Form, Input } from "./Styled/form";
+import { H2 } from "./Styled/Htext";
+
 
 export function Layout(){
     useEffect(() => {
@@ -55,20 +60,20 @@ export function Layout(){
     }
     
     return(<> 
-    <header>
-        {start && <><form >
-        username: <input type="text" name="userName" value={user.userName} onChange={handleUser} ></input>
-        password: <input type="text" name="passWord" value={user.passWord} onChange={handleUser}></input>
-        </form>
-        <button onClick={logg}>LoggIn</button> 
+    <Header>
+        {start && <><Form >
+        Username: <Input type="text" name="userName" value={user.userName} onChange={handleUser} />
+        Password: <Input type="text" name="passWord" value={user.passWord} onChange={handleUser}/>
+        </Form>
+        <Button onClick={logg}>Logg In</Button> 
         </>}
         {loggIn && <>
-        <div>
-            Välkommen {user.userName} 
-            <button onClick={loggOut}>Logga ut</button>
-        </div>
+        
+            <H2>Välkommen {user.userName} </H2>
+            <Button onClick={loggOut}>Logg Out</Button>
+        
         </>}
-    </header>
+    </Header>
     <Outlet/>
     </>)
 }
