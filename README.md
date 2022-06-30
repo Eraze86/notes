@@ -7,10 +7,13 @@ Användare:
 packet som är installerade:
 I frontend:
 - npm i react
+- npm i --save-dev typescript
 - npm react-router-dom
 - npm i axios
 - npm i @tinymce/tinymce-react
 - npm install
+- npm install --save styled-components
+- npm install --save-dev @types/styled-components
 
 I backend:
 - npx express-generator --no-view
